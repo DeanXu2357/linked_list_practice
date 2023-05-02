@@ -34,3 +34,50 @@ func (l *List) ToString() string {
 	}
 	return output
 }
+
+//// 最一開始 copilot 給我的
+//func RemoveListNode(l *List, n *Node) {
+//	if n == l.head {
+//		l.head = n.next
+//	} else {
+//		list := l.head
+//		for list.next != n && list.next != nil {
+//			list = list.next
+//		}
+//		list.next = n.next
+//	}
+//}
+
+// RemoveListNode removes a node from a list
+// 註：copilot 協助完成
+func RemoveListNode(l *List, n *Node) {
+	if l == nil || n == nil || l.head == nil {
+		return
+	}
+
+	if n == l.head {
+		l.head = n.next
+		return
+	}
+
+	list := l.head
+	for list.next != n && list.next != nil {
+		list = list.next
+	}
+
+	if list.next == n {
+		list.next = n.next
+		return
+	}
+}
+
+// RemoveListNode2 removes a node from a list
+// 註：自己寫的 Linus taste version
+func RemoveListNode2(l *List, n *Node) {
+	var current **Node = &l.head
+	for *current != n && *current != nil {
+		current = &(*current).next
+	}
+
+	*current = n.next
+}
