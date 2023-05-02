@@ -74,7 +74,11 @@ func RemoveListNode(l *List, n *Node) {
 // RemoveListNode2 removes a node from a list
 // 註：自己寫的 Linus taste version
 func RemoveListNode2(l *List, n *Node) {
-	var current **Node = &l.head
+	if l == nil || n == nil || l.head == nil {
+		return
+	}
+
+	current := &l.head
 	for *current != n && *current != nil {
 		current = &(*current).next
 	}

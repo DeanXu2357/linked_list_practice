@@ -173,3 +173,25 @@ func TestRemoveListNode2_RemoveEmpty(t *testing.T) {
 		t.Errorf("List ToString() error: expect '%s', got '%s'", "", l.ToString())
 	}
 }
+
+func TestRemoveListNode2_ListIsNil(t *testing.T) {
+	a := Node{next: nil, value: 1}
+	var l *List
+	RemoveListNode2(l, &a)
+
+	if l != nil {
+		t.Errorf("List ToString() error: expect '%s', got '%s'", "", l.ToString())
+	}
+}
+
+func TestRemoveListNode2_HeadIsNil(t *testing.T) {
+	a := Node{next: nil, value: 1}
+
+	l := List{head: nil}
+
+	RemoveListNode2(&l, &a)
+
+	if l.ToString() != "" {
+		t.Errorf("List ToString() error: expect '%s', got '%s'", "", l.ToString())
+	}
+}
