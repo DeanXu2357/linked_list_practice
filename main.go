@@ -78,10 +78,10 @@ func RemoveListNode2(l *List, n *Node) {
 		return
 	}
 
-	current := &l.head
-	for *current != n && *current != nil {
-		current = &(*current).next
+	prev := &l.head
+	for *prev != n && *prev != nil {
+		prev = &(*prev).next
 	}
 
-	*current = n.next
+	*prev = n.next
 }
