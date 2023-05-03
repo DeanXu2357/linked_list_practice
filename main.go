@@ -79,12 +79,12 @@ func RemoveListNode2(l *List, target *Node) {
 	}
 
 	indirect := &l.head
-	for *indirect != target && *indirect != nil {
+	for *indirect != target {
 		indirect = &(*indirect).next
-	}
 
-	if *indirect == nil {
-		return
+		if *indirect == nil {
+			return
+		}
 	}
 
 	*indirect = target.next
