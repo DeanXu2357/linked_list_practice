@@ -73,15 +73,19 @@ func RemoveListNode(l *List, n *Node) {
 
 // RemoveListNode2 removes a node from a list
 // 註：自己寫的 Linus taste version
-func RemoveListNode2(l *List, n *Node) {
-	if l == nil || n == nil || l.head == nil {
+func RemoveListNode2(l *List, target *Node) {
+	if l == nil || target == nil || l.head == nil {
 		return
 	}
 
-	prev := &l.head
-	for *prev != n && *prev != nil {
-		prev = &(*prev).next
+	indirect := &l.head
+	for *indirect != target && *indirect != nil {
+		indirect = &(*indirect).next
 	}
 
-	*prev = n.next
+	if *indirect == nil {
+		return
+	}
+
+	*indirect = target.next
 }

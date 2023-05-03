@@ -44,6 +44,22 @@ func TestRemoveListNode_NodeNotExist(t *testing.T) {
 	}
 }
 
+func TestRemoveListNode_NodeNotExist2(t *testing.T) {
+	a := Node{next: nil, value: 1}
+	b := Node{next: &a, value: 2}
+	c := Node{next: &b, value: 3}
+
+	l := List{head: &c}
+
+	d := Node{next: &a, value: 4}
+
+	RemoveListNode(&l, &d)
+
+	if l.ToString() != "3 -> 2 -> 1" {
+		t.Errorf("List ToString() error: expect '%s', got '%s'", "3 -> 2 -> 1", l.ToString())
+	}
+}
+
 func TestRemoveListNode_Head(t *testing.T) {
 	a := Node{next: nil, value: 1}
 	b := Node{next: &a, value: 2}
@@ -116,6 +132,22 @@ func TestRemoveListNode2_NodeNotExist(t *testing.T) {
 	l := List{head: &c}
 
 	d := Node{next: nil, value: 4}
+
+	RemoveListNode2(&l, &d)
+
+	if l.ToString() != "3 -> 2 -> 1" {
+		t.Errorf("List ToString() error: expect '%s', got '%s'", "3 -> 2 -> 1", l.ToString())
+	}
+}
+
+func TestRemoveListNode2_NodeNotExist2(t *testing.T) {
+	a := Node{next: nil, value: 1}
+	b := Node{next: &a, value: 2}
+	c := Node{next: &b, value: 3}
+
+	l := List{head: &c}
+
+	d := Node{next: &a, value: 4}
 
 	RemoveListNode2(&l, &d)
 
